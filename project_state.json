@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Educational language learning app for kids, inspired by and aiming to improve upon Lingokids",
+  "architectural_notes": [
+    "Internet Identity integration for authentication with support for major identity providers (Google, Apple, Microsoft)",
+    "Guest/demo mode for unauthenticated users to explore app functionality",
+    "Backend integration required for persisting user progress, quiz scores, and achievements"
+  ],
+  "known_issues": [
+    "Deployment issue: app not accessible (\"No live apps yet\" error shown)",
+    "Authentication system not functional - users unable to sign up/login",
+    "Progress tracking system (AR-4) requires backend implementation to persist data for logged-in users"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-kid-friendly-educational-language-learning-application-with-interactive-lessons-and-activities",
+      "title": "Create a kid-friendly educational language learning application with interactive lessons and activities",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-vocabulary-learning-modules-with-words-categorized-by-topics-animals-colors-numbers-family-food",
+      "title": "Implement vocabulary learning modules with words categorized by topics (animals, colors, numbers, family, food)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-interactive-quiz-games-where-children-can-match-words-to-images-or-hear-pronunciations",
+      "title": "Create interactive quiz games where children can match words to images or hear pronunciations",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-reward-system-with-stars-or-badges-earned-after-completing-activities-to-encourage-continued-learning",
+      "title": "Add reward system with stars or badges earned after completing activities to encourage continued learning",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-vibrant-playful-visual-theme-with-warm-inviting-colors-oranges-yellows-greens-rounded-shapes-large-friendly-typography-and-animated-elements-that-create-a-joyful-engaging-atmosphere-for-young-learners-without-overwhelming-them",
+      "title": "Design a vibrant, playful visual theme with warm, inviting colors (oranges, yellows, greens), rounded shapes, large friendly typography, and animated elements that create a joyful, engaging atmosphere for young learners without overwhelming them",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-generated-images-as-static-assets-in-frontend-public-assets-generated-for-vocabulary-illustrations-category-icons-and-reward-badges",
+      "title": "Render generated images as static assets in frontend/public/assets/generated for vocabulary illustrations, category icons, and reward badges",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-internet-identity-authentication-system-that-allows-users-to-log-in-securely-using-their-existing-accounts-google-apple-microsoft-through-internet-identity-integration",
+      "title": "Implement Internet Identity authentication system that allows users to log in securely using their existing accounts (Google, Apple, Microsoft) through Internet Identity integration",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-guest-mode-that-allows-users-to-explore-and-use-all-application-features-without-requiring-authentication-or-account-creation",
+      "title": "Add Guest Mode that allows users to explore and use all application features without requiring authentication or account creation",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-connect-frontend-progress-tracking-components-to-the-backend-storage-system-so-that-authenticated-users-progress-data-is-loaded-on-login-and-updated-after-each-activity-completion",
+      "title": "Connect frontend progress tracking components to the backend storage system so that authenticated users' progress data is loaded on login and updated after each activity completion",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-4",
+      "summary": "Implement a progress tracking system that saves completed lessons and quiz scores per user",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add Internet Identity authentication system supporting Google, Apple, Microsoft accounts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement Guest Mode allowing users to explore app features without login",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Fix deployment issue preventing the application from being accessible, ensuring the app deploys correctly and is reachable at the deployment URL without showing 'No live apps yet' error",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Implement backend progress tracking system that persists completed lessons, quiz scores, earned badges, and activity completion status for authenticated users",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "KidLingo",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,125 @@
+{
+  "kind": "build_request",
+  "title": "Fix deployment and add authentication with guest mode",
+  "projectName": "KidLingo",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Fix deployment issue preventing the application from being accessible, ensuring the app deploys correctly and is reachable at the deployment URL without showing 'No live apps yet' error",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-user-upload"
+        ],
+        "quotes": [
+          "No live apps yet",
+          "Go live with an app now"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Application deploys successfully without errors",
+        "Deployment URL loads the application home page",
+        "No 'No live apps yet' error appears",
+        "All static assets (images, styles) load correctly"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement Internet Identity authentication system that allows users to log in securely using their existing accounts (Google, Apple, Microsoft) through Internet Identity integration",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-conversation"
+        ],
+        "quotes": [
+          "sign up nhi ho rha h",
+          "Authentication fix: Internet Identity integration properly add करूंगा"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Internet Identity login button is visible on the application",
+        "Users can successfully authenticate using Google, Apple, or Microsoft accounts via Internet Identity",
+        "Authentication state persists across page refreshes",
+        "Authenticated users can access their personalized data and progress"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add Guest Mode that allows users to explore and use all application features without requiring authentication or account creation",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-conversation"
+        ],
+        "quotes": [
+          "Guest Mode: बिना login के भी app explore कर सकें"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A 'Continue as Guest' or 'Try Without Login' option is prominently displayed",
+        "Guest users can access all vocabulary categories",
+        "Guest users can complete quizzes and see immediate results",
+        "Guest mode provides clear indication that progress won't be saved",
+        "Guest users can later choose to create an account to save their progress"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement backend progress tracking system that persists completed lessons, quiz scores, earned badges, and activity completion status for authenticated users",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-conversation"
+        ],
+        "quotes": [
+          "Progress Tracking: Logged-in users के लिए lessons, quiz scores, earned badges और completed activities save होंगी backend में"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores completed lessons per user and category",
+        "Quiz scores and attempts are saved and retrievable",
+        "Earned badges and stars persist across sessions",
+        "Progress data is associated with the authenticated user's identity",
+        "Users can view their historical progress and achievements"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Connect frontend progress tracking components to the backend storage system so that authenticated users' progress data is loaded on login and updated after each activity completion",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-conversation"
+        ]
+      },
+      "acceptanceCriteria": [
+        "ProgressDisplay component shows data from backend for authenticated users",
+        "RewardsBadge component displays earned badges stored in backend",
+        "Quiz completion triggers backend API call to save score and progress",
+        "Dashboard loads user's current progress state on mount",
+        "Progress updates reflect immediately in the UI after activities"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useInternetIdentity.tsx",
+    "Do not modify frontend/src/hooks/useActor.ts",
+    "Do not modify frontend/src/main.tsx",
+    "Do not modify any files in frontend/src/components/ui",
+    "Maintain single-actor architecture in backend/main.mo",
+    "Use existing backend authorization and role-based access control patterns"
+  ],
+  "nonGoals": [
+    "Implementing authentication methods other than Internet Identity",
+    "Adding social media sharing features",
+    "Implementing real-time multiplayer quiz features",
+    "Creating parent dashboard or separate parent accounts",
+    "Adding email notifications or SMS messaging",
+    "Implementing external database integrations"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

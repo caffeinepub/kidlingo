@@ -1,0 +1,137 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix deployment and add authentication with guest mode",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Fix deployment issue preventing the application from being accessible",
+      "acceptanceCriteria": [
+        "Application deploys successfully without errors",
+        "Deployment URL loads the application home page",
+        "No 'No live apps yet' error appears",
+        "All static assets (images, styles) load correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Verify correct base path configuration and script module references for deployment environment"
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Add error boundary to catch and display initialization errors gracefully during app startup"
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Implement Internet Identity authentication system",
+      "acceptanceCriteria": [
+        "Internet Identity login button is visible on the application",
+        "Users can successfully authenticate using Google, Apple, or Microsoft accounts via Internet Identity",
+        "Authentication state persists across page refreshes",
+        "Authenticated users can access their personalized data and progress"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Use the authorization component to provide Internet Identity authentication. Ensure the login button is prominently displayed in the header. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update authentication flow to properly handle Internet Identity login state and redirect users appropriately after successful authentication"
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "modify",
+          "description": "Use the authorization component to check for existing user profiles and prevent modal flash. Implement proper profile setup flow for first-time authenticated users using getCallerUserProfile and saveCallerUserProfile. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add Guest Mode that allows users to explore application features without authentication",
+      "acceptanceCriteria": [
+        "A 'Continue as Guest' or 'Try Without Login' option is prominently displayed",
+        "Guest users can access all vocabulary categories",
+        "Guest users can complete quizzes and see immediate results",
+        "Guest mode provides clear indication that progress won't be saved",
+        "Guest users can later choose to create an account to save their progress"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Add guest mode banner explaining that progress is not saved for unauthenticated users, with a call-to-action to log in for progress tracking"
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add 'Continue as Guest' button alongside the login button in the header, allowing users to bypass authentication and explore the app"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove authentication requirement for accessing vocabulary categories and quiz games, allowing guest users to explore all features while showing appropriate messaging about limited functionality"
+        },
+        {
+          "path": "frontend/src/components/ProgressDisplay.tsx",
+          "operation": "modify",
+          "description": "Display guest mode notice when user is not authenticated, explaining that progress is temporary and encouraging login to save progress permanently"
+        },
+        {
+          "path": "frontend/src/components/RewardsBadge.tsx",
+          "operation": "modify",
+          "description": "Show guest mode message for unauthenticated users with prompt to create an account to earn and save badges permanently"
+        },
+        {
+          "path": "frontend/src/pages/QuizGame.tsx",
+          "operation": "modify",
+          "description": "Allow guest users to complete quizzes and see immediate results without saving progress, with clear indication that scores are not persisted"
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Connect frontend progress tracking components to backend storage",
+      "acceptanceCriteria": [
+        "ProgressDisplay component shows data from backend for authenticated users",
+        "RewardsBadge component displays earned badges stored in backend",
+        "Quiz completion triggers backend API call to save score and progress",
+        "Dashboard loads user's current progress state on mount",
+        "Progress updates reflect immediately in the UI after activities"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProgressDisplay.tsx",
+          "operation": "modify",
+          "description": "Connect to backend using useGetProgress hook from useQueries to fetch and display authenticated user's progress data (completedLessons, totalScore, stars)"
+        },
+        {
+          "path": "frontend/src/components/RewardsBadge.tsx",
+          "operation": "modify",
+          "description": "Connect to backend using useGetRewards hook from useQueries to fetch and display authenticated user's earned badges. Reference generated badge images at frontend/public/assets/generated/star-badge.dim_128x128.png and frontend/public/assets/generated/trophy-badge.dim_128x128.png"
+        },
+        {
+          "path": "frontend/src/pages/QuizGame.tsx",
+          "operation": "modify",
+          "description": "Update quiz completion flow to call useCompleteLesson mutation from useQueries for authenticated users, passing the quiz score to persist progress in backend"
+        },
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Integrate useGetProgress and useGetRewards hooks to load user's current progress state on mount and display real-time progress data in ProgressDisplay and RewardsBadge components"
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Ensure proper query invalidation after completeLesson mutation to refresh progress and rewards data immediately in the UI"
+        }
+      ]
+    }
+  ]
+}

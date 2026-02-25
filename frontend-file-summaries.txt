@@ -1,0 +1,17 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup; removed authentication requirement to allow guest access, keeping profile setup modal for authenticated users.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper with header, navigation, and footer; updated authentication button to show \"Sign Up / Login\" for guests and simplified navigation to always show Home button.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup collecting name and preferred language; unchanged from previous version.",
+  "frontend/src/pages/Dashboard.tsx": "Main dashboard with hero banner, guest mode notification, progress/rewards (authenticated only), and vocabulary categories accessible to all users.",
+  "frontend/src/components/VocabularyCategoryCard.tsx": "Colorful card component for vocabulary categories with Learn and Quiz action buttons; removed unnecessary transform classes for Tailwind CSS v3 compatibility.",
+  "frontend/src/components/ProgressDisplay.tsx": "Progress display component showing completed lessons and total score for authenticated users; shows sign-up prompt with login button for guest users.",
+  "frontend/src/components/RewardsBadge.tsx": "Rewards component displaying earned badges and stars for authenticated users; shows sign-up prompt with login button for guest users.",
+  "frontend/src/pages/VocabularyCategory.tsx": "Page displaying vocabulary words for a selected category with back navigation; removed unnecessary transform classes for Tailwind CSS v3 compatibility.",
+  "frontend/src/components/WordCard.tsx": "Interactive flip card component showing vocabulary word with image on front and translation on back.",
+  "frontend/src/pages/QuizGame.tsx": "Quiz game page with guest mode support allowing unauthenticated users to play quizzes with local answer checking; progress only saved for authenticated users with clear guest mode warning banner.",
+  "frontend/src/components/QuizQuestion.tsx": "Individual quiz question component with image, word, and multiple-choice answer buttons; removed unnecessary transform classes for Tailwind CSS v3 compatibility.",
+  "frontend/src/components/QuizResult.tsx": "Quiz completion screen showing final score, star rating, and navigation options; removed unnecessary transform classes for Tailwind CSS v3 compatibility.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend operations with proper authentication checks; progress and rewards queries only enabled for authenticated users to prevent errors.",
+  "frontend/src/index.css": "Global styles with warm, kid-friendly OKLCH color palette, playful fonts, and 3D flip card animations.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color palette, rounded borders, playful fonts, and custom animations for child-friendly design."
+}
